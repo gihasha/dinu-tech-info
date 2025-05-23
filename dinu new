@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DINU TECH INFO</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rajdhani', 'Orbitron', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background-color: #0a0a0a;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #00f3ff;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid #00f3ff33;
+        }
+        
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        .logo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            animation: rotate 10s linear infinite;
+            box-shadow: 0 0 20px #00f3ff;
+            border: 2px solid #00f3ff;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px #00f3ff, 0 0 20px #00f3ff33;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        
+        .developer-info {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(0, 243, 255, 0.05);
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0 0 20px #00f3ff33;
+            border: 1px solid #00f3ff33;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        
+        nav {
+            background-color: rgba(10, 10, 10, 0.9);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px #00f3ff33;
+            border-bottom: 1px solid #00f3ff33;
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background-color: rgba(15, 12, 41, 0.95);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: right 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 1000;
+            border-left: 1px solid #00f3ff33;
+            opacity: 0;
+            transform: scale(0.9);
+        }
+        
+        .nav-links.active {
+            right: 0;
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .nav-links li {
+            margin: 20px 0;
+            transform: translateX(30px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        
+        .nav-links.active li {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        
+        .nav-links li:nth-child(1) { transition-delay: 0.1s; }
+        .nav-links li:nth-child(2) { transition-delay: 0.2s; }
+        .nav-links li:nth-child(3) { transition-delay: 0.3s; }
+        .nav-links li:nth-child(4) { transition-delay: 0.4s; }
+        
+        .nav-links a {
+            color: #00f3ff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            position: relative;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            padding: 10px 20px;
+            border-radius: 30px;
+        }
+        
+        .nav-links a:hover {
+            color: #ffffff;
+            text-shadow: 0 0 10px #00f3ff;
+            background: rgba(0, 243, 255, 0.1);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #00f3ff;
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            cursor: pointer;
+            z-index: 1001;
+            transition: transform 0.3s;
+        }
+        
+        .hamburger:hover {
+            transform: scale(1.1);
+        }
+        
+        .hamburger span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: #00f3ff;
+            border-radius: 3px;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transform-origin: right center;
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+        
+        .back-btn {
+            color: #00f3ff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s;
+            text-shadow: 0 0 5px #00f3ff;
+        }
+        
+        .back-btn:hover {
+            transform: translateX(-5px);
+            text-shadow: 0 0 10px #00f3ff;
+        }
+        
+        /* Rest of your CSS remains the same */
+        section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2rem;
+            color: #00f3ff;
+            position: relative;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px #00f3ff33;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #00f3ff, transparent);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 3px;
+            box-shadow: 0 0 10px #00f3ff;
+        }
+        
+        .channels-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .channel-card {
+            background-color: rgba(15, 12, 41, 0.7);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px #00f3ff33;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #00f3ff33;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .channel-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                transparent, transparent, transparent,
+                #00f3ff33, transparent, transparent, transparent
+            );
+            transform: rotate(30deg);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: rotate(30deg) translate(-30%, -30%); }
+            100% { transform: rotate(30deg) translate(30%, 30%); }
+        }
+        
+        .channel-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 30px #00f3ff66;
+        }
+        
+        .channel-img-container {
+            width: 100%;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid #00f3ff33;
+        }
+        
+        .channel-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #00f3ff;
+            box-shadow: 0 0 15px #00f3ff;
+            animation: rotate 15s linear infinite;
+        }
+        
+        .channel-info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .channel-name {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+            font-weight: 600;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .follow-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: linear-gradient(to right, #0f0c29, #302b63);
+            color: #00f3ff;
+            border: 1px solid #00f3ff;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            margin-top: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 1rem;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .follow-btn::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            z-index: -1;
+            background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            background-size: 400%;
+            border-radius: 30px;
+            opacity: 0;
+            transition: 0.5s;
+        }
+        
+        .follow-btn:hover::before {
+            opacity: 1;
+            animation: rgbAnimation 20s linear infinite;
+            filter: blur(2px);
+        }
+        
+        .follow-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px #00f3ff66;
+            color: #ffffff;
+            text-shadow: 0 0 5px #ffffff;
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .skill-card {
+            background-color: rgba(15, 12, 41, 0.7);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 0 20px #00f3ff33;
+            transition: transform 0.3s;
+            border: 1px solid #00f3ff33;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 30px #00f3ff66;
+        }
+        
+        .skill-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #00f3ff, transparent);
+            animation: neonGlow 2s infinite;
+        }
+        
+        @keyframes neonGlow {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+        
+        .skill-icon {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 5px #00f3ff);
+        }
+        
+        .skill-name {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #ffffff;
+            font-weight: 600;
+        }
+        
+        .skill-card p {
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+        
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .service-card {
+            background-color: rgba(15, 12, 41, 0.7);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px #00f3ff33;
+            transition: transform 0.3s;
+            border: 1px solid #00f3ff33;
+            position: relative;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 0 30px #00f3ff66;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                135deg,
+                transparent 0%,
+                #00f3ff22 50%,
+                transparent 100%
+            );
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .service-card:hover::before {
+            opacity: 1;
+        }
+        
+        .service-img {
+            width: 100%;
+            height: 150px;
+            object-fit: contain;
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            border-bottom: 1px solid #00f3ff33;
+        }
+        
+        .service-info {
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .service-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #ffffff;
+            font-weight: 600;
+        }
+        
+        .service-desc {
+            color: #b0b0b0;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .service-price {
+            font-weight: 700;
+            color: #00f3ff;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            text-shadow: 0 0 10px #00f3ff;
+            position: relative;
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(0, 243, 255, 0.1);
+            border-radius: 5px;
+            border: 1px solid #00f3ff33;
+        }
+        
+        .service-price::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            z-index: -1;
+            background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            background-size: 400%;
+            border-radius: 5px;
+            opacity: 0;
+            transition: 0.5s;
+            animation: rgbAnimation 20s linear infinite;
+        }
+        
+        .service-card:hover .service-price::after {
+            opacity: 0.3;
+        }
+        
+        .buy-btn {
+            display: inline-block;
+            padding: 12px 0;
+            background: linear-gradient(to right, #0f0c29, #302b63);
+            color: #00f3ff;
+            border: 1px solid #00f3ff;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 1rem;
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .buy-btn::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            z-index: -1;
+            background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            background-size: 400%;
+            border-radius: 30px;
+            opacity: 0;
+            transition: 0.5s;
+        }
+        
+        .buy-btn:hover::before {
+            opacity: 1;
+            animation: rgbAnimation 20s linear infinite;
+            filter: blur(2px);
+        }
+        
+        .buy-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px #00f3ff66;
+            color: #ffffff;
+            text-shadow: 0 0 5px #ffffff;
+        }
+        
+        @keyframes rgbAnimation {
+            0% { background-position: 0 0; }
+            100% { background-position: 400% 0; }
+        }
+        
+        .contact-box {
+            background-color: rgba(15, 12, 41, 0.7);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 0 20px #00f3ff33;
+            max-width: 600px;
+            margin: 40px auto 0;
+            border: 1px solid #00f3ff33;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-box::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            z-index: -1;
+            background: linear-gradient(45deg, #00f3ff, #0f0c29, #302b63, #00f3ff);
+            background-size: 400%;
+            border-radius: 10px;
+            opacity: 0;
+            transition: 0.5s;
+            animation: animate 20s linear infinite;
+        }
+        
+        .contact-box:hover::before {
+            opacity: 1;
+            filter: blur(5px);
+        }
+        
+        @keyframes animate {
+            0% { background-position: 0 0; }
+            50% { background-position: 300% 0; }
+            100% { background-position: 0 0; }
+        }
+        
+        .contact-text {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: #ffffff;
+            font-weight: 500;
+        }
+        
+        footer {
+            background-color: #0f0c29;
+            color: #00f3ff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
+            border-top: 1px solid #00f3ff33;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+        
+        /* Cyber Vibe Animation */
+        .cyber-vibe {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.3;
+            overflow: hidden;
+        }
+        
+        .cyber-line {
+            position: absolute;
+            background: linear-gradient(to right, transparent, #00f3ff, transparent);
+            height: 1px;
+            animation: cyberMove 10s linear infinite;
+            filter: drop-shadow(0 0 2px #00f3ff);
+        }
+        
+        .cyber-dot {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background-color: #00f3ff;
+            border-radius: 50%;
+            animation: cyberPulse 2s infinite alternate;
+            filter: drop-shadow(0 0 3px #00f3ff);
+        }
+        
+        @keyframes cyberMove {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        @keyframes cyberPulse {
+            0% { opacity: 0.2; transform: scale(0.8); }
+            100% { opacity: 0.8; transform: scale(1.2); }
+        }
+        
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: row;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .developer-info {
+                padding: 15px;
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .channels-container,
+            .skills-container,
+            .services-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .channel-img {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .nav-links {
+                width: 250px;
+            }
+            
+            .nav-links a {
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .channel-name {
+                font-size: 1rem;
+                min-height: 40px;
+            }
+            
+            .follow-btn,
+            .buy-btn {
+                padding: 10px 0;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cyber Vibe Animation -->
+    <div class="cyber-vibe" id="cyberVibe"></div>
+    <div class="grid-overlay"></div>
+    
+    <header id="home">
+        <div class="logo-container">
+            <img src="https://i.ibb.co/7JtspK8B/9339.jpg" alt="Dinu Tech Logo" class="logo">
+            <h1>DINU TECH INFO</h1>
+        </div>
+        
+        <div class="developer-info">
+            <p>Hello! I'm Dinu, a passionate programmer with expertise in multiple coding languages. I specialize in creating innovative solutions and providing premium services to enhance your digital experience.</p>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="nav-container">
+            <div class="back-btn" onclick="window.location.href='#'">←</div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#channels">My Chanels</a></li>
+                <li><a href="#skills">My Skills</a></li>
+                <li><a href="#services">My Service</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <section id="channels">
+        <h2 class="section-title">My Channels</h2>
+        <div class="channels-container">
+            <div class="channel-card">
+                <div class="channel-img-container">
+                    <img src="https://i.ibb.co/Z6wtMSQW/8893.jpg" alt="Channel 1 Logo" class="channel-img">
+                </div>
+                <div class="channel-info">
+                    <h3 class="channel-name">#🇱🇰 ❝𝐒𝐢𝐝𝐚𝐠𝐚𝐧𝐚𝐯𝐞𝐞_🕊️💫❞</h3>
+                    <a href="https://whatsapp.com/channel/0029VaxVCPi96H4VOKai4S3s" class="follow-btn">Follow</a>
+                </div>
+            </div>
+            
+            <div class="channel-card">
+                <div class="channel-img-container">
+                    <img src="https://i.ibb.co/b5mHPXLc/3522.jpg" alt="Channel 2 Logo" class="channel-img">
+                </div>
+                <div class="channel-info">
+                    <h3 class="channel-name">𝙳𝙲𝙼ᵀᴹツ 𝙳𝙸𝙽𝚄𝚆𝙷 𝙼𝙳 and 𝚃𝙴𝙲𝙷 0⃞2 🇱🇰⚔️</h3>
+                    <a href="https://whatsapp.com/channel/0029Vb5XXIfDp2Q3A5zeZb1d" class="follow-btn">Follow</a>
+                </div>
+            </div>
+            
+            <div class="channel-card">
+                <div class="channel-img-container">
+                    <img src="https://i.ibb.co/B5DttgQs/5678.jpg" alt="Channel 3 Logo" class="channel-img">
+                </div>
+                <div class="channel-info">
+                    <h3 class="channel-name">ᗪ𝙸ɳ𝚞𝚠卄 🆂O̴N̴G ＨU𝐁  🧚‍♂️🪄2025</h3>
+                    <a href="https://whatsapp.com/channel/0029Vb3mqn5H5JLuJO3s3Z1J" class="follow-btn">Follow</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="skills">
+        <h2 class="section-title">My Skills</h2>
+        <div class="skills-container">
+            <div class="skill-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/6132/6132222.png" alt="JavaScript" class="skill-icon">
+                <h3 class="skill-name">JavaScript</h3>
+                <p>Advanced knowledge of JavaScript for web development and automation.</p>
+            </div>
+            
+            <div class="skill-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/919/919852.png" alt="Python" class="skill-icon">
+                <h3 class="skill-name">Python</h3>
+                <p>Expertise in Python for scripting, automation, and backend development.</p>
+            </div>
+            
+            <div class="skill-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/919/919854.png" alt="Java" class="skill-icon">
+                <h3 class="skill-name">Java</h3>
+                <p>Strong Java programming skills for application development.</p>
+            </div>
+            
+            <div class="skill-card">
+                <img src="https://cdn-icons-png.flaticon.com/512/919/919851.png" alt="PHP" class="skill-icon">
+                <h3 class="skill-name">PHP</h3>
+                <p>Server-side scripting with PHP for dynamic web applications.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="services">
+        <h2 class="section-title">My Services</h2>
+        <div class="services-container">
+            <div class="service-card">
+                <img src="https://i.ibb.co/217XZkjY/1867.jpg" alt="WhatsApp Bot Deploy" class="service-img">
+                <div class="service-info">
+                    <h3 class="service-title">WHATSAPP BOT DEPLOY</h3>
+                    <p class="service-desc">ASITHA MD, PRABATH MD, MANU MD, Other</p>
+                    <p class="service-desc">30 Days Working With Warranty</p>
+                    <p class="service-price">Rs 100-250</p>
+                    <a href="https://wa.me/720244981?text=.botdeploy" class="buy-btn">BUY NOW</a>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <img src="https://i.ibb.co/DD15p2XG/1207.jpg" alt="YouTube Premium" class="service-img">
+                <div class="service-info">
+                    <h3 class="service-title">YOUTUBE PRO (PREMIUM)</h3>
+                    <p class="service-desc">Background Music And Video Play</p>
+                    <p class="service-desc">Life Time Use And Life Time Warranty</p>
+                    <p class="service-price">Rs 300 Life Time</p>
+                    <a href="https://wa.me/720244981?text=.ytpro" class="buy-btn">BUY NOW</a>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <img src="https://i.ibb.co/PncPSb1/4244.jpg" alt="TikTok Premium" class="service-img">
+                <div class="service-info">
+                    <h3 class="service-title">TIKTOK PREMIUM</h3>
+                    <p class="service-desc">Can Non WaterMark TikTok Video Download And Special Comment Section Approve (වට්සැප් චැනල් කරන අයට වාසි)</p>
+                    <p class="service-price">Rs 300 Life Time</p>
+                    <a href="https://wa.me/720244981?text=.ttpro" class="buy-btn">BUY NOW</a>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <img src="https://i.ibb.co/ccNGkxdt/9752.jpg" alt="Render Account" class="service-img">
+                <div class="service-info">
+                    <h3 class="service-title">RENDER ACCOUNT FREE PLAN</h3>
+                    <p class="service-desc">Can Deploy Pair Web - Web Hosting - Wa Bot Deploying</p>
+                    <p class="service-desc">Life Time Warranty, No Acc Band</p>
+                    <p class="service-price">Rs 200 Life Time</p>
+                    <a href="https://wa.me/720244981?text=.render" class="buy-btn">BUY NOW</a>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <img src="https://i.ibb.co/rKHdsZM9/2148.jpg" alt="Vercel Account" class="service-img">
+                <div class="service-info">
+                    <h3 class="service-title">VERCEL ACC VERIFY</h3>
+                    <p class="service-desc">Life Time Work, Life Time Warranty</p>
+                    <p class="service-price">Rs 100 Life Time</p>
+                    <a href="https://wa.me/720244981?text=.vercel" class="buy-btn">BUY NOW</a>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <img src="https://i.ibb.co/r2xgVsM4/2395.jpg" alt="Bot Hosting" class="service-img">
+                <div class="service-info">
+                    <h3 class="service-title">2GB BOT HOSTING PANEL</h3>
+                    <p class="service-desc">NO ACC BAND, UNLIMITED RUNTIME</p>
+                    <p class="service-price">Rs 100 Life Time</p>
+                    <a href="https://wa.me/720244981?text=.pannel" class="buy-btn">BUY NOW</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact-box">
+            <p class="contact-text">All Premium App Available Contact Me</p>
+            <a href="https://wa.me/728899640?text=*PREMIUM+APP*🌝" class="buy-btn">Contact Now</a>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2023 DINU TECH INFO. All Rights Reserved.</p>
+    </footer>
+    
+    <script>
+        // Auto-scroll to home section on page load
+        window.onload = function() {
+            setTimeout(() => {
+                document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+            
+            createCyberVibe();
+            rotateLogo();
+            addNavGlow();
+        };
+
+        // Hamburger menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            
+            // Reset animations when closing
+            if (!navLinks.classList.contains('active')) {
+                document.querySelectorAll('.nav-links li').forEach(item => {
+                    item.style.transition = 'none';
+                    setTimeout(() => {
+                        item.style.transition = 'all 0.4s ease';
+                    }, 10);
+                });
+            }
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Create cyber vibe animation
+        function createCyberVibe() {
+            const cyberVibe = document.getElementById('cyberVibe');
+            const colors = ['#00f3ff', '#6e8efb', '#a777e3', '#4facfe'];
+            
+            // Create moving lines
+            for (let i = 0; i < 30; i++) {
+                const line = document.createElement('div');
+                line.className = 'cyber-line';
+                line.style.width = `${Math.random() * 300 + 100}px`;
+                line.style.top = `${Math.random() * 100}%`;
+                line.style.animationDuration = `${Math.random() * 10 + 5}s`;
+                line.style.animationDelay = `${Math.random() * 5}s`;
+                line.style.opacity = Math.random() * 0.5 + 0.1;
+                line.style.background = `linear-gradient(to right, transparent, ${colors[Math.floor(Math.random() * colors.length)]}, transparent)`;
+                cyberVibe.appendChild(line);
+            }
+            
+            // Create pulsing dots
+            for (let i = 0; i < 50; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'cyber-dot';
+                dot.style.left = `${Math.random() * 100}%`;
+                dot.style.top = `${Math.random() * 100}%`;
+                dot.style.animationDuration = `${Math.random() * 3 + 1}s`;
+                dot.style.animationDelay = `${Math.random() * 2}s`;
+                cyberVibe.appendChild(dot);
+            }
+        }
+        
+        // Rotate logo
+        function rotateLogo() {
+            const logo = document.querySelector('.logo');
+            let rotation = 0;
+            
+            setInterval(() => {
+                rotation += 1;
+                if (rotation >= 360) rotation = 0;
+                logo.style.transform = `rotate(${rotation}deg)`;
+            }, 100);
+        }
+        
+        // Add glow effect to navigation items on scroll
+        function addNavGlow() {
+            const sections = document.querySelectorAll('section');
+            const navItems = document.querySelectorAll('.nav-links a');
+            
+            window.addEventListener('scroll', () => {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= sectionTop - 300) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href') === `#${current}`) {
+                        item.classList.add('active');
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>
